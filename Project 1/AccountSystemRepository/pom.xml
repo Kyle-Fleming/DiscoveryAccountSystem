@@ -38,11 +38,10 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-<!--        TODO: INSERT DATABASE DRIVER HERE USING SPRING STARTUP -->
+<!--         INSERT DATABASE DRIVER HERE USING SPRING STARTUP-->
         <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <scope>runtime</scope>
+            <groupId>com.oracle.ojdbc</groupId>
+            <artifactId>ojdbc10_g</artifactId>
         </dependency>
     </dependencies>
 
