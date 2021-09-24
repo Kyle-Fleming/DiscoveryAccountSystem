@@ -1,12 +1,12 @@
 package za.ac.nwu.ac.domain.exception;
 
-import za.ac.nwu.ac.domain.dto.Demo;
+import za.ac.nwu.ac.domain.dto.Account;
 
 public class demo2Exception {
-    private Demo demoCatch;
+    private Account accountCatch;
 
     public  void method(){
-        demoCatch = new Demo();
+        accountCatch = new Account();
 
     }
 }

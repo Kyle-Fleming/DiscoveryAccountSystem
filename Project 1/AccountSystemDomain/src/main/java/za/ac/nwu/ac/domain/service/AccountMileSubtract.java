@@ -2,10 +2,8 @@ package za.ac.nwu.ac.domain.service;
 
 import java.io.Serializable;
 import java.util.Objects;
-/*
-to do: for all accountMile management services, change parameters to add value,
-subtract value and view value of Account passed through constructor
-*/
+
+/* todo: for all accountMile management services, change parameters to add value subtract value and view value of Account passed through constructor */
 public class AccountMileSubtract<T> implements Serializable{
 
     private final boolean successful;

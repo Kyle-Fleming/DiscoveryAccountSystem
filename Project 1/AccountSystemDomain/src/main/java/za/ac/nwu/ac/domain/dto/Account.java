@@ -4,15 +4,15 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class Demo {
+public class Account {
     private Date dateCreated;
     private String name;
     private int days;
 
-    public Demo() {
+    public Account() {
     }
 
-    public Demo(Date dateCreated, String name, int days) {
+    public Account(Date dateCreated, String name, int days) {
         this.dateCreated = dateCreated;
         this.name = name;
         this.days = days;
