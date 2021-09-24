@@ -13,4 +13,31 @@
     <artifactId>AccountSystemLogic</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>za.ac.nwu.ac</groupId>
+            <artifactId>AccountSystemDomain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>za.ac.nwu.ac</groupId>
+            <artifactId>AccountSystemTranslator</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>za.ac.nwu.ac</groupId>
+            <artifactId>AccountSystemRepository</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>za.ac.nwu.ac</groupId>
+            <artifactId>AccountSystemWebSpringBoot</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

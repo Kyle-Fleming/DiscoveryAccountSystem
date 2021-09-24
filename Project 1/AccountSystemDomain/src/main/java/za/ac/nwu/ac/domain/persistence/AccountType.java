@@ -18,7 +18,6 @@ public class AccountType implements Serializable {
             strategy = GenerationType.SEQUENCE,
             generator = "VIT_RSA_GENERIC_SEQ")
 
-
     private Long accountTypeId;
     private String mnemonic;
     private String accountTypeName;
