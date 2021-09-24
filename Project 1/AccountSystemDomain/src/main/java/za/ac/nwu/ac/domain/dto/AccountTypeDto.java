@@ -38,8 +38,6 @@ public class AccountTypeDto<T> implements  Serializable{
         return super.toString();
     }
 
-    public  void method() {
-        dto = new AccountTransactionDto();
-    }
+
 
 }

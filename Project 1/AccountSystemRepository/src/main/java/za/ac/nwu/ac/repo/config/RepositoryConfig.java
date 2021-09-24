@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -15,7 +14,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.util.Properties;
 
 @Configuration
@@ -42,7 +40,7 @@ public class RepositoryConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(){
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource());
+//        entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPackagesToScan(ENTITY_PACKAGES_TO_SCAN);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         entityManagerFactoryBean.setJpaProperties(buildJpaProperties());
@@ -58,34 +56,33 @@ public class RepositoryConfig {
         return transactionManager;
 
     }
-
-    @Bean
+/*    @Bean
     public JdbcTemplate getJdbcTemplate(){
         return new JdbcTemplate(dataSource());
     }
 
     @Bean
     public DataSource dataSource(){
-//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//        dataSource.setDriverClassName("com.microsoft.sqlserver");
-//        try{
-//            //TODO figure out how to call MS SQL data source and other pieces of data
-//
-//
-//            dataSource.setUser(username);
-//            dataSource.setPassword(password);
-//            dataSource.setURL(datasourceUrl);
-//            dataSource.setImplicitCachingEnabled(true);
-//            dataSource.setFastConnectionFailoverEnabled(true);
-//
-//            DataSource datasource = null;
-//            return datasource;
-//        }
-//        catch (SQLException e){
-//            throw new RuntimeException("Unable to connect to the DB", e);
-//        }
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.microsoft.sqlserver");
+        try{
+            //TO DO figure out how to call MS SQL data source and other pieces of data
+
+
+            dataSource.setUser(username);
+            dataSource.setPassword(password);
+            dataSource.setURL(datasourceUrl);
+            dataSource.setImplicitCachingEnabled(true);
+            dataSource.setFastConnectionFailoverEnabled(true);
+
+            DataSource datasource = null;
+            return datasource;
+        }
+        catch (SQLException e){
+            throw new RuntimeException("Unable to connect to the DB", e);
+        }
         return dataSource();
-    }
+    }*/
 
     @Bean Properties buildJpaProperties(){
         Properties properties = new Properties();

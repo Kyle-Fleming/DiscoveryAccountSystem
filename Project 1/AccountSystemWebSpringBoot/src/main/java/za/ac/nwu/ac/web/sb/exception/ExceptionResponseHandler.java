@@ -10,13 +10,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import za.ac.nwu.ac.domain.dto.ErrorResponse;
 import za.ac.nwu.ac.domain.dto.GeneralResponse;
 
-import java.util.concurrent.atomic.AtomicReference;
-
 public class ExceptionResponseHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {RuntimeException.class})
-    private ResponseEntity<Object> handleGeneralException(Exception ex, WebRequest request){
-        var errorResponse = new ErrorResponse<>(ex.getMessage());
+    private ResponseEntity<Object> handleGeneralException(Exception ex, WebRequest request, Boolean successful, Object payload){
+        var errorResponse = new ErrorResponse<>(ex.getMessage(), successful, payload);
         var generalResponse = new GeneralResponse<>(false, errorResponse);
         var response = new ResponseEntity<>(generalResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 
