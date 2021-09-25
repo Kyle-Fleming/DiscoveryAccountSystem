@@ -26,18 +26,5 @@
             <version>${project.version}</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>za.ac.nwu.ac</groupId>
-            <artifactId>AccountSystemRepository</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>za.ac.nwu.ac</groupId>
-            <artifactId>AccountSystemWebSpringBoot</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 </project>
