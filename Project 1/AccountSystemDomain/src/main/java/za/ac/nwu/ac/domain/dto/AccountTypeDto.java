@@ -1,27 +1,28 @@
 package za.ac.nwu.ac.domain.dto;
 
 import org.springframework.stereotype.Component;
+import za.ac.nwu.ac.domain.persistence.AccountType;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 @Component
 public class AccountTypeDto<T> implements  Serializable{
+    private final AccountType accountType;
     private AccountTransactionDto dto;
-    private final boolean successful;
-    private final transient T payload;
+
     private LocalDate CreationDate;
 
-    public AccountTypeDto(AccountTransactionDto dto, boolean successful, T payload, LocalDate creationDate) {
-        this.dto = dto;
-        this.successful = successful;
-        this.payload = payload;
-        CreationDate = creationDate;
+
+    public AccountTypeDto(AccountType accountType){
+        this.accountType=accountType;
+
     }
 
-    public boolean isSuccessful() {
-        return successful;
+    public AccountType getAccountType() {
+        return accountType;
     }
+
 
     public LocalDate getCreationDate() {
         return CreationDate;
@@ -31,9 +32,6 @@ public class AccountTypeDto<T> implements  Serializable{
         CreationDate = creationDate;
     }
 
-    public T getPayload() {
-        return payload;
-    }
 
     @Override
     public int hashCode() {
