@@ -9,13 +9,13 @@ import java.util.Objects;
 @Table(name = "DEMO_ACCOUNT_TYPE", schema = "VITRSA_SANDBOX")
 public class AccountTransaction implements Serializable {
     @Column(name = "TX_ID")
-    private Long transactionId;
+    private Number transactionId;
 
     @Column(name = "MEMBER_ID")
-    private Long memberId;
+    private int memberId;
 
     @Column(name = "AMOUNT")
-    private Long amount;
+    private double amount;
 
     @Column(name = "TX_DATE")
     private LocalDate transactionDate;
@@ -28,7 +28,7 @@ public class AccountTransaction implements Serializable {
     public AccountTransaction() {
     }
 
-    public AccountTransaction(Long transactionId, Long memberId, Long amount, LocalDate transactionDate, AccountType accountType) {
+    public AccountTransaction(int transactionId, int memberId, int amount, LocalDate transactionDate, AccountType accountType) {
         this.transactionId = transactionId;
         this.memberId = memberId;
         this.amount = amount;
@@ -36,27 +36,27 @@ public class AccountTransaction implements Serializable {
         this.accountType = accountType;
     }
 
-    public Long getTransactionId() {
+    public Number getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(Long transactionId) {
+    public void setTransactionId(Number transactionId) {
         this.transactionId = transactionId;
     }
 
-    public Long getMemberId() {
+    public int getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(Long memberId) {
+    public void setMemberId(int memberId) {
         this.memberId = memberId;
     }
 
-    public Long getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

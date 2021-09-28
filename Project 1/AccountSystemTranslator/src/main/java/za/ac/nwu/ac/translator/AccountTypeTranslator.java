@@ -1,7 +1,6 @@
 package za.ac.nwu.ac.translator;
 
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
-import za.ac.nwu.ac.domain.persistence.AccountType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +17,10 @@ public interface AccountTypeTranslator {
         return accountType;
     }
 
-    public default AccountType getAccountTypeByMnemonic(String mnemonic){
-        AccountType accountTypeDto = null;
+    public default AccountTypeDto getAccountTypeByMnemonic(String mnemonic){
+        AccountTypeDto accountTypeDto = null;
         return accountTypeDto;
     }
 
-    public default  AccountTypeDto getAccountTypeDtoByMnemonic
 
 }

@@ -2,13 +2,15 @@ package za.ac.nwu.ac.repo.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import za.ac.nwu.ac.domain.dto.AccountTypeDto;
+import za.ac.nwu.ac.domain.persistence.AccountType;
+
+import java.util.List;
 
 @Repository
-public interface AccountTypeRepository extends JpaRepository<AccountTypeDto, Long> {
+public interface AccountTypeRepository extends JpaRepository<AccountType, Long> {
 
-    public default String getAccountTypeByMnemonic(String mnemonic){
-        return AccountTypeDto.class.getTypeName();
-    }
+     String getAccountTypeByMnemonic();
+
+     List<AccountType> findAll();
 
 }

@@ -1,15 +1,7 @@
 package za.ac.nwu.ac.web.sb.controller;
 
-import io.swagger.annotations.*;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import za.ac.nwu.ac.domain.dto.AccountTransactionDto;
-import za.ac.nwu.ac.domain.dto.AccountTypeDto;
-import za.ac.nwu.ac.domain.persistence.AccountType;
-import za.ac.nwu.ac.domain.service.GeneralResponse;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("account-type")
@@ -25,7 +17,7 @@ public class AccountTypeController {
     public ResponseEntity<GeneralResponse<List<AccountType>>> getAll()
 
     {
-//        TO DO: figure out what flow is within certain areas
+//        TODO: figure out what flow is within certain areas
 //        List<AccountTypeDto> accountTypes = fetchAccountTypeFlow.getAllAccountTypes();
         GeneralResponse<String> response = new GeneralResponse<>(true, "No types found");
         return new ResponseEntity<T>(response, HttpStatus.OK );

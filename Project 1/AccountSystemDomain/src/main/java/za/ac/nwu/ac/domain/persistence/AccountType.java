@@ -3,22 +3,21 @@ package za.ac.nwu.ac.domain.persistence;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Set;
 import java.util.Objects;
 
 @Entity
-@Table(name = "DEMO_ACCOUNT_TYPE", schema = "VITRSA_SANDBOX")
+@Table(name = "ACCOUNT_TYPE", schema = "C##KYLE")
 public class AccountType implements Serializable {
     @Id
     @SequenceGenerator(
-            name = "VIT_RSA_GENERIC_SEQ",
-            sequenceName = "VITRSA_SANDBOX.VIT_RSA_GENERIC_SEQ",
+            name = "C##KYLE_GENERIC_SEQ",
+            sequenceName = "C##KYLE.VIT_RSA_GENERIC_SEQ",
             allocationSize = 1)
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "VIT_RSA_GENERIC_SEQ")
+            generator = "C##KYLE_GENERIC_SEQ")
 
-    private Long accountTypeId;
+    private Number accountTypeId;
     private String mnemonic;
     private String accountTypeName;
     private LocalDate creationDate;
@@ -34,12 +33,12 @@ public class AccountType implements Serializable {
     }
 
     @Column(name = "ACCOUNT_TYPE_ID")
-    public Long getAccountTypeId() {
+    public Number getAccountTypeId() {
         return accountTypeId;
     }
 
 
-    public void setAccountTypeId(Long accountTypeId) {
+    public void setAccountTypeId(Number accountTypeId) {
         this.accountTypeId = accountTypeId;
     }
 
