@@ -9,17 +9,18 @@ import java.util.Objects;
 @Table(name = "ACCOUNT_TYPE", schema = "C##KYLE")
 public class AccountType implements Serializable {
     @Id
-    @SequenceGenerator(
-            name = "C##KYLE_GENERIC_SEQ",
-            sequenceName = "C##KYLE.VIT_RSA_GENERIC_SEQ",
-            allocationSize = 1)
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "C##KYLE_GENERIC_SEQ")
-
+    @SequenceGenerator(name = "C##KYLE_GENERIC_SEQ", sequenceName = "C##KYLE.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "C##KYLE_GENERIC_SEQ")
+    @Column(name = "ACCOUNT_TYPE_ID")
     private Number accountTypeId;
+
+    @Column(name = "MNEMONIC")
     private String mnemonic;
+
+    @Column(name = "ACCOUNT_TYPE_NAME")
     private String accountTypeName;
+
+    @Column(name = "CREATION_DATE")
     private LocalDate creationDate;
 
     public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, LocalDate creationDate) {
@@ -32,7 +33,6 @@ public class AccountType implements Serializable {
     public AccountType() {
     }
 
-    @Column(name = "ACCOUNT_TYPE_ID")
     public Number getAccountTypeId() {
         return accountTypeId;
     }
@@ -42,7 +42,6 @@ public class AccountType implements Serializable {
         this.accountTypeId = accountTypeId;
     }
 
-    @Column(name = "MNEMONIC")
     public String getMnemonic() {
         return mnemonic;
     }
@@ -52,7 +51,7 @@ public class AccountType implements Serializable {
         this.mnemonic = mnemonic;
     }
 
-    @Column(name = "ACCOUNT_TYPE_NAME")
+
     public String getAccountTypeName() {
         return accountTypeName;
     }
@@ -61,7 +60,7 @@ public class AccountType implements Serializable {
         this.accountTypeName = accountTypeName;
     }
 
-    @Column(name = "CREATION_DATE")
+
     public LocalDate getCreationDate() {
         return creationDate;
     }
