@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import za.ac.nwu.ac.domain.dto.ErrorResponse;
-import za.ac.nwu.ac.domain.dto.GeneralResponse;
-
+import za.ac.nwu.ac.domain.service.GeneralResponse;
 public class ExceptionResponseHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {RuntimeException.class})

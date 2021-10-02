@@ -6,24 +6,14 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "DEMO_ACCOUNT_TYPE", schema = "VITRSA_SANDBOX")
+@Table(name = "ACCOUNT_TRANSACTION", schema = "C##KYLE")
 public class AccountTransaction implements Serializable {
-    @Column(name = "TX_ID")
+    //TODO: these @Column references must be on the getters of each relevant private field
     private Number transactionId;
-
-    @Column(name = "MEMBER_ID")
     private int memberId;
-
-    @Column(name = "AMOUNT")
     private double amount;
-
-    @Column(name = "TX_DATE")
     private LocalDate transactionDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ACCOUNT_TYPE_ID")
     private AccountType accountType;
-
 
     public AccountTransaction() {
     }
@@ -36,44 +26,48 @@ public class AccountTransaction implements Serializable {
         this.accountType = accountType;
     }
 
+    @Column(name = "TX_ID")
     public Number getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(Number transactionId) {
-        this.transactionId = transactionId;
-    }
-
+    @Column(name = "MEMBER_ID")
     public int getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
-    }
-
+    @Column(name = "AMOUNT")
     public double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
 
+    @Column(name = "TX_DATE")
     public LocalDate getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(LocalDate transactionDate) {
-        this.transactionDate = transactionDate;
-    }
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ACCOUNT_TYPE_ID")
     public AccountType getAccountType() {
         return accountType;
     }
 
+    //Set methods
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+    public void setTransactionDate(LocalDate transactionDate) {
+        this.transactionDate = transactionDate;
+    }
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
+    }
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
+    }
+    public void setTransactionId(Number transactionId) {
+        this.transactionId = transactionId;
     }
 
     @Override

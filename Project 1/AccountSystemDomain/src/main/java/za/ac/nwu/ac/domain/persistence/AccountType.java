@@ -4,24 +4,23 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "ACCOUNT_TYPE", schema = "C##KYLE")
 public class AccountType implements Serializable {
-    @Id
-    @SequenceGenerator(name = "C##KYLE_GENERIC_SEQ", sequenceName = "C##KYLE.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "C##KYLE_GENERIC_SEQ")
-    @Column(name = "ACCOUNT_TYPE_ID")
+
+    //TODO: these @Column references must be on the getters of each relevant private field
+
     private Number accountTypeId;
-
-    @Column(name = "MNEMONIC")
     private String mnemonic;
-
-    @Column(name = "ACCOUNT_TYPE_NAME")
     private String accountTypeName;
-
-    @Column(name = "CREATION_DATE")
     private LocalDate creationDate;
+
+    private Set<AccountTransaction> accountTransactions;
+
+    public AccountType() {
+    }
 
     public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, LocalDate creationDate) {
         this.accountTypeId = accountTypeId;
@@ -30,43 +29,52 @@ public class AccountType implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public AccountType() {
-    }
 
+
+    @Id
+    @SequenceGenerator(name = "C##KYLE_GENERIC_SEQ", sequenceName = "C##KYLE.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "C##KYLE_GENERIC_SEQ")
+    @Column(name = "ACCOUNT_TYPE_ID")
     public Number getAccountTypeId() {
         return accountTypeId;
     }
 
-
-    public void setAccountTypeId(Number accountTypeId) {
-        this.accountTypeId = accountTypeId;
-    }
-
+    @Column(name = "MNEMONIC")
     public String getMnemonic() {
         return mnemonic;
     }
 
-
-    public void setMnemonic(String mnemonic) {
-        this.mnemonic = mnemonic;
-    }
-
-
+    @Column(name = "ACCOUNT_TYPE_NAME")
     public String getAccountTypeName() {
         return accountTypeName;
     }
 
-    public void setAccountTypeName(String accountTypeName) {
-        this.accountTypeName = accountTypeName;
-    }
-
-
+    @Column(name = "CREATION_DATE")
     public LocalDate getCreationDate() {
         return creationDate;
     }
 
+    @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountType", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    public Set<AccountTransaction> getAccountTransactions(){
+        return accountTransactions;
+    }
+
+    //Set methods
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
+    }
+    public void setAccountTypeId(Number accountTypeId) {
+        this.accountTypeId = accountTypeId;
+    }
+    public void setAccountTypeName(String accountTypeName) {
+        this.accountTypeName = accountTypeName;
+    }
+    public void setMnemonic(String mnemonic) {
+        this.mnemonic = mnemonic;
+    }
+
+    public void setAccountTransactions(Set<AccountTransaction> accountTransactions) {
+        this.accountTransactions = accountTransactions;
     }
 
     @Override
