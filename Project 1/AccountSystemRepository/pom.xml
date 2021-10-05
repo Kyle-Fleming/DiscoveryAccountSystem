@@ -41,7 +41,7 @@
 <!--         INSERT DATABASE DRIVER HERE USING SPRING STARTUP-->
         <dependency>
             <groupId>com.oracle.ojdbc</groupId>
-            <artifactId>ojdbc10_g</artifactId>
+            <artifactId>ojdbc8</artifactId>
         </dependency>
     </dependencies>
 
