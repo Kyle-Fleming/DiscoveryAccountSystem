@@ -32,8 +32,8 @@ public class AccountType implements Serializable {
 
 
     @Id
-    @SequenceGenerator(name = "C##KYLE_GENERIC_SEQ", sequenceName = "C##KYLE.VIT_RSA_GENERIC_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "C##KYLE_GENERIC_SEQ")
+    @SequenceGenerator(name = "ACCOUNT_TYPE_SEQ", sequenceName = "C##KYLE.ACCOUNT_TYPE_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_TYPE_SEQ")
     @Column(name = "ACCOUNT_TYPE_ID")
     public Number getAccountTypeId() {
         return accountTypeId;
