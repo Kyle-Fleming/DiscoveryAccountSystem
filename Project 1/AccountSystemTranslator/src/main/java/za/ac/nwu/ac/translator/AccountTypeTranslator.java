@@ -2,25 +2,15 @@ package za.ac.nwu.ac.translator;
 
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface AccountTypeTranslator {
 
-    default List<AccountTypeDto> getAllAccountTypes(){
-        List<AccountTypeDto> accountTypeDtos = new ArrayList<>();
+    List<AccountTypeDto> getAllAccountTypes();
 
-        return accountTypeDtos;
-    }
+    AccountTypeDto create(AccountTypeDto accountType);
 
-    default AccountTypeDto create(AccountTypeDto accountType) {
-        return accountType;
-    }
-
-    default AccountTypeDto getAccountTypeByMnemonic(String mnemonic){
-        AccountTypeDto accountTypeDto = null;
-        return accountTypeDto;
-    }
+    AccountTypeDto getAccountTypeByMnemonic(String mnemonic);
 
 
 }

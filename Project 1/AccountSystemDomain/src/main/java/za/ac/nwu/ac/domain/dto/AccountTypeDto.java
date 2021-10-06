@@ -1,6 +1,7 @@
 package za.ac.nwu.ac.domain.dto;
 
 import org.springframework.stereotype.Component;
+import za.ac.nwu.ac.domain.persistence.AccountType;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ public class AccountTypeDto implements  Serializable{
     private String mnemonic;
     private String accountTypeName;
     private LocalDate creationDate;
-
+    private AccountType accountType;
     public AccountTypeDto() {
     }
 
@@ -21,6 +22,16 @@ public class AccountTypeDto implements  Serializable{
         this.accountTypeName = accountTypeName;
         this.creationDate = creationDate;
     }
+
+    public AccountTypeDto(AccountType accountType) {
+        this.accountType = accountType;
+        this.setAccountTypeName(accountType.getAccountTypeName());
+        this.setCreationDate(accountType.getCreationDate());
+        this.setMnemonic(accountType.getMnemonic());
+    }
+
+    public AccountType getAccountType() {return accountType;}
+    public void setAccountType(AccountType accountType) {this.accountType = accountType;}
     public String getMnemonic() {return mnemonic;}
     public void setMnemonic(String mnemonic) {this.mnemonic = mnemonic;}
     public String getAccountTypeName() {return accountTypeName;}
