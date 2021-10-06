@@ -20,16 +20,12 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
         this.accountTypeRepository=accountTypeRepository;
     }
 
-//    TODO: figure out how to fix this method in the translator
-
     @Override
     public List<AccountTypeDto> getAllAccountTypes(){
         List<AccountTypeDto> accountTypeDtos = new ArrayList<>();
         try{
             for(AccountType accountType : accountTypeRepository.findAll()){
-                //current setup of how to add every account type into a string thing
-                //accountTypeDtos.add(new AccountTypeDto(accountType));
-                accountTypeDtos.add(new AccountTypeDto(accountType.getMnemonic(), accountType.getAccountTypeName(), accountType.getCreationDate()));
+                accountTypeDtos.add(new AccountTypeDto(accountType));
             }
         } catch (Exception e) {
             //TODO: Log
@@ -40,12 +36,25 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
 
 
 
-    public AccountTypeDto create(AccountTypeDto accountType) {
-        return accountType;
+    public AccountTypeDto create(AccountTypeDto accountTypeDto) {
+        try {
+            AccountType accountType = accountTypeRepository.save(accountTypeDto.getAccountType());
+            return new AccountTypeDto(accountType);
+        }
+        catch (Exception e){
+            throw new RuntimeException("Unable to save to the DB", e);
+        }
+
     }
 
     @Override
     public AccountTypeDto getAccountTypeByMnemonic(String mnemonic) {
-        return null;
+        try {
+            AccountType accountType = accountTypeRepository.getAccountTypeByMnemonic(mnemonic);
+            return new AccountTypeDto(accountType);
+        }
+        catch (Exception e){
+            throw new RuntimeException("Unable to read from the DB", e);
+        }
     }
 }
