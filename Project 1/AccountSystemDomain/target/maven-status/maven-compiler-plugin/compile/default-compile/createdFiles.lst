@@ -5,7 +5,5 @@ za\ac\nwu\ac\domain\service\AccountMileAdd.class
 za\ac\nwu\ac\domain\dto\AccountTransactionDto.class
 za\ac\nwu\ac\domain\service\AccountViewer.class
 za\ac\nwu\ac\domain\persistence\AccountTransaction.class
-za\ac\nwu\ac\domain\dto\Account.class
 za\ac\nwu\ac\domain\persistence\AccountType.class
-za\ac\nwu\ac\domain\exception\demo2Exception.class
 za\ac\nwu\ac\domain\service\GeneralResponse.class

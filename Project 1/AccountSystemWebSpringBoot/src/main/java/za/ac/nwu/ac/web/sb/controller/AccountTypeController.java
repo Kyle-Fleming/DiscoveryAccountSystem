@@ -40,7 +40,6 @@ public class AccountTypeController {
     })
     public ResponseEntity<GeneralResponse<List<AccountTypeDto>>> getAll()
     {
-//        TODO: figure out what flow is within certain areas
         List<AccountTypeDto> accountTypes = fetchAccountTypeFlow.getAllAccountTypes();
         GeneralResponse<List<AccountTypeDto>> response = new GeneralResponse<>(true, accountTypes);
         return new ResponseEntity<>(response, HttpStatus.OK );
@@ -84,9 +83,18 @@ public class AccountTypeController {
         AccountTypeDto accountType = fetchAccountTypeFlow.getAccountTypeByMnemonic(mnemonic);
         GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
-
-
+    @GetMapping("/error")
+    @ApiOperation(value = "Throws an exception")
+    @ApiResponses(value={
+            @ApiResponse(code= 200, message = "The ping was received and echoed", response = GeneralResponse.class),
+            @ApiResponse(code= 400, message = "Bad Request", response = GeneralResponse.class),
+            @ApiResponse(code= 404, message = "Not found", response = GeneralResponse.class),
+            @ApiResponse(code= 500, message = "Internal server error", response = GeneralResponse.class)
+    })
+    public ResponseEntity<GeneralResponse<String>> ping(){
+        throw new RuntimeException("give an error");
     }
 
     }

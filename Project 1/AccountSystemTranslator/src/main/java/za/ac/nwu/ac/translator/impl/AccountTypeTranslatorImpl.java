@@ -3,12 +3,8 @@ package za.ac.nwu.ac.translator.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
-import za.ac.nwu.ac.domain.persistence.AccountType;
 import za.ac.nwu.ac.repo.persistence.AccountTypeRepository;
 import za.ac.nwu.ac.translator.AccountTypeTranslator;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
@@ -19,6 +15,9 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
     public AccountTypeTranslatorImpl(AccountTypeRepository accountTypeRepository){
         this.accountTypeRepository=accountTypeRepository;
     }
+/*
+
+    TODO: figure out how to fix this method in the translator
 
     @Override
     public List<AccountTypeDto> getAllAccountTypes(){
@@ -32,6 +31,7 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
         }
         return accountTypeDtos;
     }
+*/
 
     public AccountTypeDto create(AccountTypeDto accountType) {
         return accountType;

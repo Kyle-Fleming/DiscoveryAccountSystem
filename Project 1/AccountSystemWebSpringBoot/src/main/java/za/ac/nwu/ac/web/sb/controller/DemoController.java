@@ -96,7 +96,7 @@ public class DemoController {
     @GetMapping("/error")
     @ApiOperation(value = "Throws an exception")
     @ApiResponses(value={
-            @ApiResponse(code= 200, message = "The ping was received and ecoed", response = GeneralResponse.class),
+            @ApiResponse(code= 200, message = "The ping was received and echoed", response = GeneralResponse.class),
             @ApiResponse(code= 400, message = "Bad Request", response = GeneralResponse.class),
             @ApiResponse(code= 404, message = "Not found", response = GeneralResponse.class),
             @ApiResponse(code= 500, message = "Internal server error", response = GeneralResponse.class)
