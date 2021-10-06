@@ -83,8 +83,8 @@
 
             <dependency>
                 <groupId>com.oracle.database.jdbc</groupId>
-                <artifactId>ojdbc10</artifactId>
-                <version>21.2.1.204</version>
+                <artifactId>ojdbc8-production</artifactId>
+                <version>21.1.0.0</version>
             </dependency>
 
             <dependency>

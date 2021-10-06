@@ -1,4 +1,4 @@
-package za.ac.nwu.ac.domain.dto;
+package za.ac.nwu.ac.domain.exception;
 import java.io.Serializable;
 
 public class ErrorResponse <T> implements  Serializable{

@@ -11,13 +11,17 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Long> 
 
     //TODO: create queries for database to fetch account types and add new ones
 
-    @Query(value = "SELECT AT FROM ACCOUNTTYPE WHERE AT.MNEMONIC = :MNEMONIC")
+
+    @Query(value ="SELECT"+
+    "           at"+
+    "           FROM"+
+    "           AccountType at"+
+    "   WHERE at.mnemonic = :mnemonic")
     AccountType getAccountTypeByMnemonic(String mnemonic);
 
-    @Query(value = "INSERT"+" INTO"+" ACCOUNTTYPE "+"AT"+" VALUES("+"AT.ACCOUNTTYPENAME = :ACCOUNTTYPENAME," +
-            "AT.MNEMONIC = :MNEMONIC" + "AT.CREATIONDATE = :CREATIONDATE)")
+    @Query(value = "INSERT INTO ACCOUNT_TYPE AT VALUES(ACCOUNT_TYPE_NAME, MNEMONIC, CREATION_DATE")
     AccountTypeDto create(AccountTypeDto accountTypeDto);
 
-    @Query(value = "SELECT NEW za.ac.nwu.ac.domain.dto.AccountTypeDto(" + "at.mnemonic, " + "")
-    AccountType getAccountTypeDtoByMnemonic(String mnemonic);
+    @Query(value = "SELECT DISTINCT ACCOUNT_TYPE_NAME FROM ACCOUNT_TYPE")
+    AccountType getAllAccountTypes();
 }

@@ -6,7 +6,6 @@ import za.ac.nwu.ac.domain.persistence.AccountType;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
-
 @Component
 public class AccountTypeDto implements  Serializable{
 

@@ -10,8 +10,6 @@ import java.util.Set;
 @Table(name = "ACCOUNT_TYPE", schema = "C##KYLE")
 public class AccountType implements Serializable {
 
-    //TODO: these @Column references must be on the getters of each relevant private field
-
     private Number accountTypeId;
     private String mnemonic;
     private String accountTypeName;

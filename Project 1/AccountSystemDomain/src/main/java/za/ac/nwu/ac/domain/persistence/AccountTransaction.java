@@ -8,7 +8,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "ACCOUNT_TRANSACTION", schema = "C##KYLE")
 public class AccountTransaction implements Serializable {
-    //TODO: these @Column references must be on the getters of each relevant private field
     private Number transactionId;
     private int memberId;
     private double amount;
@@ -40,7 +39,6 @@ public class AccountTransaction implements Serializable {
     public double getAmount() {
         return amount;
     }
-
 
     @Column(name = "TX_DATE")
     public LocalDate getTransactionDate() {

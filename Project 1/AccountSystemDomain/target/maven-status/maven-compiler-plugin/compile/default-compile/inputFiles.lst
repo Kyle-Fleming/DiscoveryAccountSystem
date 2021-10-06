@@ -3,7 +3,7 @@ C:\Users\seeke\@DEV\DiscoveryAccountSystem\Project 1\AccountSystemDomain\src\mai
 C:\Users\seeke\@DEV\DiscoveryAccountSystem\Project 1\AccountSystemDomain\src\main\java\za\ac\nwu\ac\domain\service\AccountMileAdd.java
 C:\Users\seeke\@DEV\DiscoveryAccountSystem\Project 1\AccountSystemDomain\src\main\java\za\ac\nwu\ac\domain\dto\AccountTransactionDto.java
 C:\Users\seeke\@DEV\DiscoveryAccountSystem\Project 1\AccountSystemDomain\src\main\java\za\ac\nwu\ac\domain\service\GeneralResponse.java
-C:\Users\seeke\@DEV\DiscoveryAccountSystem\Project 1\AccountSystemDomain\src\main\java\za\ac\nwu\ac\domain\dto\ErrorResponse.java
+C:\Users\seeke\@DEV\DiscoveryAccountSystem\Project 1\AccountSystemDomain\src\main\java\za\ac\nwu\ac\domain\exception\ErrorResponse.java
 C:\Users\seeke\@DEV\DiscoveryAccountSystem\Project 1\AccountSystemDomain\src\main\java\za\ac\nwu\ac\domain\service\AccountViewer.java
 C:\Users\seeke\@DEV\DiscoveryAccountSystem\Project 1\AccountSystemDomain\src\main\java\za\ac\nwu\ac\domain\dto\AccountTypeDto.java
 C:\Users\seeke\@DEV\DiscoveryAccountSystem\Project 1\AccountSystemDomain\src\main\java\za\ac\nwu\ac\domain\service\AccountMileSubtract.java
