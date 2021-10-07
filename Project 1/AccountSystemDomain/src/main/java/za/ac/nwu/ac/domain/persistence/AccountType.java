@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "ACCOUNT_TYPE", schema = "C##KYLE")
+@Table(name = "ACCOUNT_TYPE", schema = "KYLE")
 public class AccountType implements Serializable {
 
     private Number accountTypeId;
@@ -30,7 +30,7 @@ public class AccountType implements Serializable {
 
 
     @Id
-    @SequenceGenerator(name = "ACCOUNT_TYPE_SEQ", sequenceName = "C##KYLE.ACCOUNT_TYPE_SEQ", allocationSize = 1)
+    @SequenceGenerator(name = "ACCOUNT_TYPE_SEQ", sequenceName = "KYLE.ACCOUNT_TYPE_SEQ1", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_TYPE_SEQ")
     @Column(name = "ACCOUNT_TYPE_ID")
     public Number getAccountTypeId() {

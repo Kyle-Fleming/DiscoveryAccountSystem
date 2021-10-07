@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ACCOUNT_TRANSACTION", schema = "C##KYLE")
+@Table(name = "ACCOUNT_TRANSACTION", schema = "KYLE")
 public class AccountTransaction implements Serializable {
     private Number transactionId;
     private int memberId;
@@ -25,6 +25,9 @@ public class AccountTransaction implements Serializable {
         this.accountType = accountType;
     }
 
+    @Id
+    @SequenceGenerator(name = "ACCOUNT_TRANSACTION_SEQ", sequenceName = "KYLE.ACCOUNT_TRANSACTION_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_TRANSACTION_SEQ")
     @Column(name = "TX_ID")
     public Number getTransactionId() {
         return transactionId;
