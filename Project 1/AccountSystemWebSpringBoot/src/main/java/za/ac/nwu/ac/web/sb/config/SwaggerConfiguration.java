@@ -26,6 +26,7 @@ public class SwaggerConfiguration {
     @Value("${swagger.application.description}")
     private String applicationDescription;
 
+    //TODO: SOURCE OF MY PROBLEMS
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
