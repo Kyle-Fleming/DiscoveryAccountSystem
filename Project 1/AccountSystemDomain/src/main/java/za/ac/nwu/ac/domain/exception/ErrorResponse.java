@@ -1,5 +1,6 @@
 package za.ac.nwu.ac.domain.exception;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class ErrorResponse <T> implements  Serializable{
 
@@ -28,18 +29,26 @@ public class ErrorResponse <T> implements  Serializable{
     public void setMessage(String message) {
         this.message = message;
     }
+
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ErrorResponse<?> that = (ErrorResponse<?>) o;
+        return successful == that.successful && Objects.equals(payload, that.payload) && Objects.equals(message, that.message);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(successful, payload, message);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "ErrorResponse{" +
+                "successful=" + successful +
+                ", payload=" + payload +
+                ", message='" + message + '\'' +
+                '}';
     }
 }
