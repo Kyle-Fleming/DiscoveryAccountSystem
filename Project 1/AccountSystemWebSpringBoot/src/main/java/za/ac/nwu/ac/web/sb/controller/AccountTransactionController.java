@@ -2,13 +2,13 @@ package za.ac.nwu.ac.web.sb.controller;
 
 
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import za.ac.nwu.ac.domain.persistence.AccountTransaction;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import za.ac.nwu.ac.domain.service.GeneralResponse;
 
 @RestController
@@ -26,6 +26,7 @@ public class AccountTransactionController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+/*
 
     @GetMapping("/ping")
     @ApiOperation(value = "Gets all the configured Account types.", notes = "Returns a list of account types")
@@ -54,6 +55,7 @@ public class AccountTransactionController {
         GeneralResponse<AccountTransaction> response= new GeneralResponse<>(true, AT1);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+*/
 
     @GetMapping("/error")
     @ApiOperation(value = "Throws an exception")

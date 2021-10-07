@@ -1,14 +1,15 @@
 package za.ac.nwu.ac.web.sb.controller;
 
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 import za.ac.nwu.ac.domain.service.GeneralResponse;
 import za.ac.nwu.ac.logic.flow.CreateAccountTypeFlow;
@@ -19,7 +20,6 @@ import java.util.List;
 @RestController
 @RequestMapping("account-type")
 public class AccountTypeController {
-
     private final FetchAccountTypeFlow fetchAccountTypeFlow;
     private final CreateAccountTypeFlow createAccountTypeFlow;
 
@@ -44,6 +44,7 @@ public class AccountTypeController {
         GeneralResponse<List<AccountTypeDto>> response = new GeneralResponse<>(true, accountTypes);
         return new ResponseEntity<>(response, HttpStatus.OK );
     }
+/*
 
     //Creates a new AccountType by using createAccountTypeFlow implementation in the translator layer
     @PostMapping("")
@@ -84,7 +85,7 @@ public class AccountTypeController {
         GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
+*/
     @GetMapping("/error")
     @ApiOperation(value = "Throws an exception")
     @ApiResponses(value={
@@ -96,6 +97,7 @@ public class AccountTypeController {
     public ResponseEntity<GeneralResponse<String>> ping(){
         throw new RuntimeException("give an error");
     }
+
 
     }
 

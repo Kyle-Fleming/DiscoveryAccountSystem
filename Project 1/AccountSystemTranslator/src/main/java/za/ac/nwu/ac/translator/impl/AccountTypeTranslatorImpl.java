@@ -12,7 +12,6 @@ import java.util.List;
 
 @Component
 public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
-
     private final AccountTypeRepository accountTypeRepository;
 
     @Autowired
@@ -34,9 +33,7 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
         return accountTypeDtos;
     }
 
-
-
-    public AccountTypeDto create(AccountTypeDto accountTypeDto) {
+    /*public AccountTypeDto create(AccountTypeDto accountTypeDto) {
         try {
             AccountType accountType = accountTypeRepository.save(accountTypeDto.getAccountType());
             return new AccountTypeDto(accountType);
@@ -57,4 +54,13 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
             throw new RuntimeException("Unable to read from the DB", e);
         }
     }
+
+    @Override
+    public AccountTypeDto getAccountTypeDtoByMnemonic(String mnemonic) {
+        try {
+            return accountTypeRepository.getAccountTypeDtoByMnemonic(mnemonic);
+        }catch (Exception e){
+            throw new RuntimeException("Unable to read from the DB", e );
+        }
+    }*/
 }

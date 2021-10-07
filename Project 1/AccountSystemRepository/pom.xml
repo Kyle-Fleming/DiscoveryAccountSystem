@@ -38,8 +38,6 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-<!--         TODO: figure out if needed to INSERT DATABASE DRIVER HERE USING SPRING STARTUP-->
-
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
             <artifactId>ojdbc8</artifactId>
