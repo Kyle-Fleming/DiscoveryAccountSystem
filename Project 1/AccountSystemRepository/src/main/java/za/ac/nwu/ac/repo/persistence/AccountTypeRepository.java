@@ -8,8 +8,7 @@ import za.ac.nwu.ac.domain.persistence.AccountType;
 public interface AccountTypeRepository extends JpaRepository<AccountType, Long> {
 
     //TODO: create queries for database to fetch account types and add new ones
-/*
-    @Query(value ="SELECT"+
+ /*   @Query(value ="SELECT"+
     "           at"+
     "           FROM"+
     "           AccountType at"+

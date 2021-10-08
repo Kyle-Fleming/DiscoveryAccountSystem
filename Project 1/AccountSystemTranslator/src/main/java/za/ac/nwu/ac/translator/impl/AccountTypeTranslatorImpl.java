@@ -33,7 +33,7 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
         return accountTypeDtos;
     }
 
-    /*public AccountTypeDto create(AccountTypeDto accountTypeDto) {
+    public AccountTypeDto create(AccountTypeDto accountTypeDto) {
         try {
             AccountType accountType = accountTypeRepository.save(accountTypeDto.getAccountType());
             return new AccountTypeDto(accountType);
@@ -43,7 +43,7 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
         }
 
     }
-
+/*
     @Override
     public AccountTypeDto getAccountTypeByMnemonic(String mnemonic) {
         try {
