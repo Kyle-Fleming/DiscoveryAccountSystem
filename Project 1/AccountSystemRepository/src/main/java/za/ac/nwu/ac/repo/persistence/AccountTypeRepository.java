@@ -15,6 +15,19 @@ public interface AccountTypeRepository extends JpaRepository<AccountType, Number
 */
 
     //TODO: create queries for database to fetch account types and add new ones
+
+
+    @Query(value = "select"+
+            "   ACCOUNT_TYPE_ID,"+
+            "   ACCOUNT_TYPE_NAME,"+
+            "   CREATION_DATE,"+
+            "   MNEMONIC"+
+            "   FROM"+
+            "       KYLE.ACCOUNT_TYPE"+
+            "   WHERE MNEMONIC = :mnemonic", nativeQuery = true)
+    //Native queries are not recommended.
+    AccountType getAccountTypeByMnemonicNativeQuery(String mnemonic);
+
     @Query(value ="SELECT"+
     "           at"+
     "           FROM"+

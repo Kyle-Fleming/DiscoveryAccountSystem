@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "ACCOUNT_TYPE", schema = "KYLE")
@@ -15,7 +14,7 @@ public class AccountType implements Serializable {
     private String accountTypeName;
     private LocalDate creationDate;
 
-    private Set<AccountTransaction> accountTransactions;
+    //private Set<AccountTransaction> accountTransactions;
 
     public AccountType() {
     }
@@ -30,8 +29,9 @@ public class AccountType implements Serializable {
 
 
     @Id
-    @SequenceGenerator(name = "ACCOUNT_TYPE_SEQ", sequenceName = "KYLE.ACCOUNT_TYPE_SEQ1", allocationSize = 1)
+    @SequenceGenerator(name = "ACCOUNT_TYPE_SEQ", sequenceName = "KYLE.ACCOUNT_TYPE_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_TYPE_SEQ")
+
     @Column(name = "ACCOUNT_TYPE_ID")
     public Number getAccountTypeId() {
         return accountTypeId;
@@ -52,11 +52,11 @@ public class AccountType implements Serializable {
         return creationDate;
     }
 
-    @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountType", orphanRemoval = true, cascade = CascadeType.PERSIST)
+  /*  @OneToMany(targetEntity = AccountTransaction.class, fetch = FetchType.LAZY, mappedBy = "accountType", orphanRemoval = true, cascade = CascadeType.PERSIST)
     public Set<AccountTransaction> getAccountTransactions(){
         return accountTransactions;
     }
-
+*/
     //Set methods
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
@@ -71,10 +71,10 @@ public class AccountType implements Serializable {
         this.mnemonic = mnemonic;
     }
 
-    public void setAccountTransactions(Set<AccountTransaction> accountTransactions) {
+   /* public void setAccountTransactions(Set<AccountTransaction> accountTransactions) {
         this.accountTransactions = accountTransactions;
     }
-
+*/
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

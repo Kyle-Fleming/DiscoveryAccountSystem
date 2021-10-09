@@ -1,5 +1,7 @@
 package za.ac.nwu.ac.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.stereotype.Component;
 import za.ac.nwu.ac.domain.persistence.AccountType;
 
@@ -29,13 +31,41 @@ public class AccountTypeDto implements  Serializable{
         this.setMnemonic(accountType.getMnemonic());
     }
 
-    public AccountType getAccountType() {return accountType;}
-    public void setAccountType(AccountType accountType) {this.accountType = accountType;}
+    @ApiModelProperty(position = 1,
+    value = "AccountType Mnemonic",
+    name = "Mnemonic",
+    notes = "Uniquely identifies the account type",
+    dataType = "java.lang.String",
+    example = "MILES",
+    required = true)
     public String getMnemonic() {return mnemonic;}
-    public void setMnemonic(String mnemonic) {this.mnemonic = mnemonic;}
+
+    @ApiModelProperty(position = 2,
+            value = "AccountType Name",
+            name = "Name",
+            notes = "Name of the account type",
+            dataType = "java.lang.String",
+            example = "Miles",
+            required = true)
     public String getAccountTypeName() {return accountTypeName;}
-    public void setAccountTypeName(String accountTypeName) {this.accountTypeName = accountTypeName;}
+
+    @ApiModelProperty(position = 3,
+            value = "AccountType Creation Date",
+            name = "CreationDate",
+            notes = "Identifies the date when the account type was created",
+            dataType = "java.util.LocalDate",
+            example = "2021-01-01",
+            allowEmptyValue = true,
+            required = false)
     public LocalDate getCreationDate() {return creationDate;}
+
+
+    @JsonIgnore
+    public AccountType getAccountType() {return accountType;}
+
+    public void setAccountType(AccountType accountType) {this.accountType = accountType;}
+    public void setAccountTypeName(String accountTypeName) {this.accountTypeName = accountTypeName;}
+    public void setMnemonic(String mnemonic) {this.mnemonic = mnemonic;}
     public void setCreationDate(LocalDate creationDate) {this.creationDate = creationDate;}
 
     @Override

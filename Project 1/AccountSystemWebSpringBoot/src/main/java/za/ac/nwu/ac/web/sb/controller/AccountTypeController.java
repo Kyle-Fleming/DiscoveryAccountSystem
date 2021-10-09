@@ -23,7 +23,13 @@ public class AccountTypeController {
     private final CreateAccountTypeFlow createAccountTypeFlow;
 
     @Autowired
-    public AccountTypeController(FetchAccountTypeFlow fetchAccountTypeFlow, @Qualifier("createAccountTypeFlowName") CreateAccountTypeFlow createAccountTypeFlow){
+    public AccountTypeController
+            (
+                    FetchAccountTypeFlow fetchAccountTypeFlow,
+                    @Qualifier("createAccountTypeFlowName")
+                            CreateAccountTypeFlow createAccountTypeFlow
+            )
+    {
         this.fetchAccountTypeFlow=fetchAccountTypeFlow;
         this.createAccountTypeFlow=createAccountTypeFlow;
     }
@@ -32,10 +38,10 @@ public class AccountTypeController {
     @GetMapping("/all")
     @ApiOperation(value = "Gets all the configured Account types.", notes = "Returns a list of account types")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Account types returned", response = GeneralResponse.class),
-            @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
-            @ApiResponse(code = 404, message = "Not Found", response = GeneralResponse.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)
+            @ApiResponse(code = 200, message = "Account types returned",    response = GeneralResponse.class),
+            @ApiResponse(code = 400, message = "Bad Request",               response = GeneralResponse.class),
+            @ApiResponse(code = 404, message = "Not Found",                 response = GeneralResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",     response = GeneralResponse.class)
     })
     public ResponseEntity<GeneralResponse<List<AccountTypeDto>>> getAll()
     {
@@ -49,8 +55,8 @@ public class AccountTypeController {
     @ApiOperation(value = "Creates a new AccountType", notes = "Creates a new AccountType in the DB")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "The AccountType was created successfully", response = GeneralResponse.class),
-            @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
-            @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)})
+            @ApiResponse(code = 400, message = "Bad Request",                              response = GeneralResponse.class),
+            @ApiResponse(code = 500, message = "Internal Server Error",                    response = GeneralResponse.class)})
     public ResponseEntity<GeneralResponse<AccountTypeDto>> create(
         @ApiParam(
                 value = "Request body to create a new AccountType.",
@@ -60,17 +66,18 @@ public class AccountTypeController {
     {
         AccountTypeDto accountTypeResponse = createAccountTypeFlow.create(accountType);
         GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountTypeResponse);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-// making a get by specified account type controller
 
+
+// making a get by specified account type controller
     @GetMapping("{mnemonic}")
     @ApiOperation(value = "Fetches the specifies account type. ", notes = "Fetches the accountType corresponding to the given mnemonic")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Goal found"),
-            @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
-            @ApiResponse(code = 404, message = "Resource Not Found", response = GeneralResponse.class),
+            @ApiResponse(code = 400, message = "Bad Request",           response = GeneralResponse.class),
+            @ApiResponse(code = 404, message = "Resource Not Found",    response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)})
     public ResponseEntity<GeneralResponse<AccountTypeDto>> getAccountType(
         @ApiParam(
@@ -78,15 +85,12 @@ public class AccountTypeController {
                 example ="MILES",
                 name = "mnemonic",
                 required = true)
-        @PathVariable("mnemonic") final String mnemonic){
-
-        try {
+        @PathVariable("mnemonic") final String mnemonic)
+    {
             AccountTypeDto accountType = fetchAccountTypeFlow.getAccountTypeByMnemonic(mnemonic);
             GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
             return new ResponseEntity<>(response, HttpStatus.OK);
-        } catch (Exception e) {
-            throw new RuntimeException("Database connectivity issues", e);
-        }
+
 
     }
 
@@ -95,9 +99,9 @@ public class AccountTypeController {
     @ApiOperation(value = "Throws an exception")
     @ApiResponses(value={
             @ApiResponse(code= 200, message = "The ping was received and echoed", response = GeneralResponse.class),
-            @ApiResponse(code= 400, message = "Bad Request", response = GeneralResponse.class),
-            @ApiResponse(code= 404, message = "Not found", response = GeneralResponse.class),
-            @ApiResponse(code= 500, message = "Internal server error", response = GeneralResponse.class)
+            @ApiResponse(code= 400, message = "Bad Request",                      response = GeneralResponse.class),
+            @ApiResponse(code= 404, message = "Not found",                        response = GeneralResponse.class),
+            @ApiResponse(code= 500, message = "Internal server error",            response = GeneralResponse.class)
     })
     public ResponseEntity<GeneralResponse<String>> ping(){
         try {

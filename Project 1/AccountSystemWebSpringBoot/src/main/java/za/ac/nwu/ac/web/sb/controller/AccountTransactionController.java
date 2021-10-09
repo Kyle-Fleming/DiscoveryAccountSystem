@@ -66,6 +66,12 @@ public class AccountTransactionController {
             @ApiResponse(code= 500, message = "Internal server error", response = GeneralResponse.class)
     })
     public ResponseEntity<GeneralResponse<String>> ping(){
-        throw new RuntimeException("give an error");
+        try {
+            GeneralResponse<String> response = new GeneralResponse<>(true, "Error response!");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        } catch (Exception e) {
+            throw new RuntimeException("give an error");
+        }
     }
 }
