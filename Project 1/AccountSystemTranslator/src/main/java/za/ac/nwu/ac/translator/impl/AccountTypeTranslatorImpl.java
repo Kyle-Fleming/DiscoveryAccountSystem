@@ -40,6 +40,7 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
             return new AccountTypeDto(accountType);
         }
         catch (Exception e){
+
             throw new RuntimeException("Unable to save to the DB accountTranslator Layer", e);
         }
 

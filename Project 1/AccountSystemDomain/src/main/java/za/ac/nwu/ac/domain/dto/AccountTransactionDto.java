@@ -1,86 +1,98 @@
 package za.ac.nwu.ac.domain.dto;
 
-import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import za.ac.nwu.ac.domain.persistence.AccountTransaction;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Component
+@ApiModel(value = "AccountTransaction",
+        description = "A DTO that represents the AccountTransaction")
 public class AccountTransactionDto implements Serializable {
-    private LocalDate transactionDate;
+
     private int memberID;
-    private Number transactionID;
     private double amount;
+    private LocalDate transactionDate;
     private AccountTransaction accountTransaction;
 
     public AccountTransactionDto(AccountTransaction accountTransaction) {
         this.accountTransaction = accountTransaction;
         this.setAmount(accountTransaction.getAmount());
         this.setTransactionDate(accountTransaction.getTransactionDate());
-        this.setTransactionID(accountTransaction.getTransactionId());
         this.setMemberID(accountTransaction.getMemberId());
     }
 
-    public AccountTransactionDto(LocalDate transactionDate, int memberID, int transactionID, double amount) {
+    public AccountTransactionDto(LocalDate transactionDate, int memberID, double amount) {
         this.transactionDate = transactionDate;
         this.memberID = memberID;
-        this.transactionID = transactionID;
         this.amount = amount;
     }
 
+    @JsonIgnore
     public AccountTransaction getAccountTransaction() {
         return accountTransaction;
     }
 
-    public void setAccountTransaction(AccountTransaction accountTransaction) {
-        this.accountTransaction = accountTransaction;
-    }
-
+    @ApiModelProperty(position = 1,
+            value =    "AccountTransaction transactionDate",
+            name =     "transactionDate",
+            notes =    "Date on which the transaction occurred",
+            dataType = "java.util.LocalDate",
+            example =  "2021-01-01",
+            required = true)
     public LocalDate getTransactionDate() {
         return transactionDate;
+    }
+
+    @ApiModelProperty(position = 1,
+            value =    "AccountTransaction memberId",
+            name =     "Member ID",
+            notes =    "Identifier for currency type for transaction",
+            dataType = "java.lang.String",
+            example =  "2",
+            required = true)
+    public int getMemberID() {
+        return memberID;
+    }
+
+
+    @ApiModelProperty(position = 1,
+            value =    "AccountType amount",
+            name =     "Amount",
+            notes =    "Value of the transaction",
+            dataType = "java.lang.Double",
+            example =  "150.0",
+            required = true)
+    public double getAmount() {
+        return amount;
     }
 
     public void setTransactionDate(LocalDate transactionDate) {
         this.transactionDate = transactionDate;
     }
-
-    public int getMemberID() {
-        return memberID;
-    }
-
     public void setMemberID(int memberID) {
         this.memberID = memberID;
     }
-
-    public Number getTransactionID() {
-        return transactionID;
-    }
-
-    public void setTransactionID(Number transactionID) {
-        this.transactionID = transactionID;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
     public void setAmount(double amount) {
         this.amount = amount;
     }
-
+    public void setAccountTransaction(AccountTransaction accountTransaction) {
+        this.accountTransaction = accountTransaction;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountTransactionDto that = (AccountTransactionDto) o;
-        return memberID == that.memberID && transactionID == that.transactionID && Double.compare(that.amount, amount) == 0 && Objects.equals(transactionDate, that.transactionDate) && Objects.equals(accountTransaction, that.accountTransaction);
+        return memberID == that.memberID && Double.compare(that.amount, amount) == 0 && Objects.equals(transactionDate, that.transactionDate) && Objects.equals(accountTransaction, that.accountTransaction);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(transactionDate, memberID, transactionID, amount, accountTransaction);
+        return Objects.hash(transactionDate, memberID, amount, accountTransaction);
     }
 
     @Override
@@ -88,7 +100,6 @@ public class AccountTransactionDto implements Serializable {
         return "AccountTransactionDto{" +
                 "transactionDate=" + transactionDate +
                 ", memberID=" + memberID +
-                ", transactionID=" + transactionID +
                 ", amount=" + amount +
                 ", accountTransaction=" + accountTransaction +
                 '}';
