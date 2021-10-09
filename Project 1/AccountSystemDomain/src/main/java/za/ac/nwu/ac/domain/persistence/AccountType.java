@@ -19,11 +19,16 @@ public class AccountType implements Serializable {
     public AccountType() {
     }
 
-    public AccountType(Long accountTypeId, String mnemonic, String accountTypeName, LocalDate creationDate) {
+    public AccountType(Number accountTypeId, String mnemonic, String accountTypeName, LocalDate creationDate) {
         this.accountTypeId = accountTypeId;
         this.mnemonic = mnemonic;
         this.accountTypeName = accountTypeName;
         this.creationDate = creationDate;
+    }
+    public AccountType(String mnemonic, String accountTypeName, LocalDate creationDate){
+        this.mnemonic=mnemonic;
+        this.accountTypeName=accountTypeName;
+        this.creationDate=creationDate;
     }
 
 
@@ -31,7 +36,6 @@ public class AccountType implements Serializable {
     @Id
     @SequenceGenerator(name = "ACCOUNT_TYPE_SEQ", sequenceName = "KYLE.ACCOUNT_TYPE_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_TYPE_SEQ")
-
     @Column(name = "ACCOUNT_TYPE_ID")
     public Number getAccountTypeId() {
         return accountTypeId;
@@ -86,15 +90,5 @@ public class AccountType implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(accountTypeId, mnemonic, accountTypeName, creationDate);
-    }
-
-    @Override
-    public String toString() {
-        return "AccountType{" +
-                "accountTypeId=" + accountTypeId +
-                ", mnemonic='" + mnemonic + '\'' +
-                ", accountTypeName='" + accountTypeName + '\'' +
-                ", creationDate=" + creationDate +
-                '}';
     }
 }

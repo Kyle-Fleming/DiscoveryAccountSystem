@@ -1,14 +1,15 @@
 package za.ac.nwu.ac.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.stereotype.Component;
 import za.ac.nwu.ac.domain.persistence.AccountType;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
-@Component
+@ApiModel(value = "AccountType",
+        description = "A DTO that represents the AccountType")
 public class AccountTypeDto implements  Serializable{
 
     private String mnemonic;
@@ -25,43 +26,44 @@ public class AccountTypeDto implements  Serializable{
     }
 
     public AccountTypeDto(AccountType accountType) {
-        this.accountType = accountType;
         this.setAccountTypeName(accountType.getAccountTypeName());
         this.setCreationDate(accountType.getCreationDate());
         this.setMnemonic(accountType.getMnemonic());
     }
 
     @ApiModelProperty(position = 1,
-    value = "AccountType Mnemonic",
-    name = "Mnemonic",
-    notes = "Uniquely identifies the account type",
+    value =    "AccountType mnemonic",
+    name =     "Mnemonic",
+    notes =    "Uniquely identifies the account type",
     dataType = "java.lang.String",
-    example = "MILES",
+    example =  "MILES",
     required = true)
     public String getMnemonic() {return mnemonic;}
 
     @ApiModelProperty(position = 2,
-            value = "AccountType Name",
-            name = "Name",
-            notes = "Name of the account type",
+            value =    "AccountType accountTypeName",
+            name =     "Name",
+            notes =    "Name of the account type",
             dataType = "java.lang.String",
-            example = "Miles",
+            example =  "Miles",
             required = true)
     public String getAccountTypeName() {return accountTypeName;}
 
     @ApiModelProperty(position = 3,
-            value = "AccountType Creation Date",
-            name = "CreationDate",
-            notes = "Identifies the date when the account type was created",
+            value =    "AccountType creationDate",
+            name =     "CreationDate",
+            notes =    "Identifies the date when the account type was created",
             dataType = "java.util.LocalDate",
-            example = "2021-01-01",
+            example =  "2021-01-01",
             allowEmptyValue = true,
             required = false)
     public LocalDate getCreationDate() {return creationDate;}
 
 
     @JsonIgnore
-    public AccountType getAccountType() {return accountType;}
+    public AccountType getAccountType(){
+        return new AccountType(getMnemonic(), getAccountTypeName(), getCreationDate());
+    }
 
     public void setAccountType(AccountType accountType) {this.accountType = accountType;}
     public void setAccountTypeName(String accountTypeName) {this.accountTypeName = accountTypeName;}
