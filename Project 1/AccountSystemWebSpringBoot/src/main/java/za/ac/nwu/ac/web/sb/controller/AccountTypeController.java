@@ -52,16 +52,17 @@ public class AccountTypeController {
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error", response = GeneralResponse.class)})
     public ResponseEntity<GeneralResponse<AccountTypeDto>> create(
-        @ApiParam(value = "Request body to create a new AccountType.",
+        @ApiParam(
+                value = "Request body to create a new AccountType.",
                 required = true)
-                @RequestBody
-                AccountTypeDto accountType){
+        @RequestBody
+                AccountTypeDto accountType)
+    {
         AccountTypeDto accountTypeResponse = createAccountTypeFlow.create(accountType);
         GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountTypeResponse);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-/*
 // making a get by specified account type controller
 
     @GetMapping("{mnemonic}")
@@ -79,10 +80,17 @@ public class AccountTypeController {
                 required = true)
         @PathVariable("mnemonic") final String mnemonic){
 
-        AccountTypeDto accountType = fetchAccountTypeFlow.getAccountTypeByMnemonic(mnemonic);
-        GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }*/
+        try {
+            AccountTypeDto accountType = fetchAccountTypeFlow.getAccountTypeByMnemonic(mnemonic);
+            GeneralResponse<AccountTypeDto> response = new GeneralResponse<>(true, accountType);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new RuntimeException("Database connectivity issues", e);
+        }
+
+    }
+
+
     @GetMapping("/error")
     @ApiOperation(value = "Throws an exception")
     @ApiResponses(value={
@@ -92,7 +100,14 @@ public class AccountTypeController {
             @ApiResponse(code= 500, message = "Internal server error", response = GeneralResponse.class)
     })
     public ResponseEntity<GeneralResponse<String>> ping(){
-        throw new RuntimeException("give an error");
+        try {
+            GeneralResponse<String> response = new GeneralResponse<>(true, "Error response!");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        } catch (Exception e) {
+            throw new RuntimeException("give an error");
+        }
+
     }
 
 

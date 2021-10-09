@@ -28,22 +28,22 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
             }
         } catch (Exception e) {
             //TODO: Log
-            throw new RuntimeException("Unable to read from the database", e);
+            throw new RuntimeException("Unable to read from the database translator error", e);
         }
         return accountTypeDtos;
     }
 
+    @Override
     public AccountTypeDto create(AccountTypeDto accountTypeDto) {
         try {
             AccountType accountType = accountTypeRepository.save(accountTypeDto.getAccountType());
             return new AccountTypeDto(accountType);
         }
         catch (Exception e){
-            throw new RuntimeException("Unable to save to the DB", e);
+            throw new RuntimeException("Unable to save to the DB accountTranslator Layer", e);
         }
 
     }
-/*
     @Override
     public AccountTypeDto getAccountTypeByMnemonic(String mnemonic) {
         try {
@@ -54,8 +54,7 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
             throw new RuntimeException("Unable to read from the DB", e);
         }
     }
-
-    @Override
+   /* @Override
     public AccountTypeDto getAccountTypeDtoByMnemonic(String mnemonic) {
         try {
             return accountTypeRepository.getAccountTypeDtoByMnemonic(mnemonic);
