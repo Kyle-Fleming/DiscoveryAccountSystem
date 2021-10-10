@@ -33,7 +33,7 @@ public class RewardsMemberController {
             @ApiResponse(code = 404, message = "Not Found",                 response = GeneralResponse.class),
             @ApiResponse(code = 500, message = "Internal Server Error",     response = GeneralResponse.class)
     })
-    public ResponseEntity<GeneralResponse<RewardsMember>> getAll(
+    public ResponseEntity<GeneralResponse<RewardsMember>> getByDiscoveryId(
             @ApiParam(
                     value = "The ID that uniquely identifies the RewardsMember.",
                     example ="125",

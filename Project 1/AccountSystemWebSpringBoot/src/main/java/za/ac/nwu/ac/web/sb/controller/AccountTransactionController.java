@@ -56,9 +56,14 @@ public class AccountTransactionController {
             @RequestBody
                     AccountTransactionDto accountTransaction)
     {
-        AccountTransactionDto accountTransactionResponse = createAccountTransactionFlow.create(accountTransaction);
-        GeneralResponse<AccountTransactionDto> response = new GeneralResponse<>(true, accountTransactionResponse);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        try {
+            AccountTransactionDto accountTransactionResponse = createAccountTransactionFlow.create(accountTransaction);
+            GeneralResponse<AccountTransactionDto> response = new GeneralResponse<>(true, accountTransactionResponse);
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+        } catch (Exception e) {
+            throw new RuntimeException("Could not create new transaction");
+        }
+
     }
 
     @GetMapping("/error")
