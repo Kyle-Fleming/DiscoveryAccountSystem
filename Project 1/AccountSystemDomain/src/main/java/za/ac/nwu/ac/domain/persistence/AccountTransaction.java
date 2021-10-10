@@ -25,6 +25,12 @@ public class AccountTransaction implements Serializable {
         this.accountType = accountType;
     }
 
+    public AccountTransaction(double amount,int memberId, LocalDate transactionDate) {
+        this.memberId = memberId;
+        this.amount = amount;
+        this.transactionDate = transactionDate;
+    }
+
     @Id
     @SequenceGenerator(name = "ACCOUNT_TRANSACTION_SEQ", sequenceName = "KYLE.ACCOUNT_TRANSACTION_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_TRANSACTION_SEQ")

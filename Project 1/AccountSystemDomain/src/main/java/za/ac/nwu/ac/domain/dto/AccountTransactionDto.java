@@ -33,7 +33,9 @@ public class AccountTransactionDto implements Serializable {
 
     @JsonIgnore
     public AccountTransaction getAccountTransaction() {
-        return accountTransaction;
+
+        return new AccountTransaction(getAmount(), getMemberID(), getTransactionDate());
+
     }
 
     @ApiModelProperty(position = 1,

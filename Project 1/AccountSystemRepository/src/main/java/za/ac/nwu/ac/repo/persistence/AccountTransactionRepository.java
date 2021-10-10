@@ -11,4 +11,6 @@ public interface AccountTransactionRepository extends JpaRepository<AccountTrans
 /*
     Query examples:
     INSERT INTO "KYLE"."ACCOUNT_TRANSACTION" (TX_ID, MEMBER_ID, AMOUNT, TX_DATE) VALUES ('3', '2', '25', TO_DATE('2021-10-03 00:00:00', 'YYYY-MM-DD HH24:MI:SS'))*/
+
+
 }
